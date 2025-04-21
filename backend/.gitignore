@@ -41,10 +41,6 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-<<<<<<< HEAD
-=======
-mysql
->>>>>>> 69fefb0 (Primeiro commit)
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
@@ -108,15 +104,6 @@ dist
 .temp
 .cache
 
-<<<<<<< HEAD
-# vitepress build output
-**/.vitepress/dist
-
-# vitepress cache directory
-**/.vitepress/cache
-
-=======
->>>>>>> 69fefb0 (Primeiro commit)
 # Docusaurus cache and generated files
 .docusaurus
 
@@ -140,8 +127,4 @@ dist
 .yarn/unplugged
 .yarn/build-state.yml
 .yarn/install-state.gz
-<<<<<<< HEAD
 .pnp.*
-=======
-.pnp.*
->>>>>>> 69fefb0 (Primeiro commit)
