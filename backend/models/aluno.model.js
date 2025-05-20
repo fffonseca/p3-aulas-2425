@@ -29,7 +29,7 @@ const Student = conexao.define(
     }
 );
 
-// Configuração da relação muitos-para-muitos
+// Configuração da relação muitos-para-muitos: Student -> Subject
 Student.belongsToMany(Subject, {
     through: "studentSubjects", // Nome da tabela intermediária
     foreignKey: "studentId", // Chave estrangeira para Student
