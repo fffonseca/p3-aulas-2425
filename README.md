@@ -13,4 +13,4 @@ A comunicação entre o front-end e o back-end é realizada através de uma REST
 
 Todos os serviços são executados em containers Docker, garantindo isolamento e portabilidade entre ambientes.<br/>
 
-<a href="http://www.ismt.pt" target="_blank"><img src=(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxF7RG9oo3BR9XyrihG6sQMMGoepOLqP4Kfw&s) ></a>
+<a href="http://www.ismt.pt" target="_blank">![ISMT](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxF7RG9oo3BR9XyrihG6sQMMGoepOLqP4Kfw&s)></a>
