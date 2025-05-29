@@ -6,6 +6,7 @@ const endpointsFunction = {};
 // método para criar um estudante
 endpointsFunction.createStudent = async (req, res) => {
   const { name, address, nif } = req.body;
+  console.log(name, address, nif);
   try {
     const dados = await Aluno.create({
       name: name,

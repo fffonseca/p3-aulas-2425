@@ -1,16 +1,13 @@
-import { Box, Typography } from "@mui/material";
-import NavBar from "../components/navbar/index";
+import { Outlet } from "react-router-dom";
+import NavBar from "../components/Navbar/Navbar";
 
-const HomePage = () => {
+const Layout = () => (
+    <>
+        <NavBar />
+        <main>
+            <Outlet />
+        </main>
+    </>
+);
 
-    return (
-        <>
-            <Box sx={{ flexGrow: 1 }}>
-                <NavBar />
-                <Typography variant="h3">App de Exemplo das Aulas</Typography>
-            </Box>
-        </>
-    )
-}
-
-export default HomePage;
+export default Layout;

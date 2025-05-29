@@ -1,4 +1,7 @@
-import * as React from 'react';
+import React, { useState, useContext, useEffect } from "react";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,12 +16,21 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Home', 'Estudantes', 'Disciplinas', 'Professores'];
+const pages = [['Home', '/home'], ['Estudantes', '/students'], ['Disciplinas', '/subjects'], ['Professores', '/teachers']];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
+
+    const { token } = useContext(AuthContext);
+    const nav = useNavigate();
+
+    useEffect(() => {
+        if (!token) {
+          nav("/");
+        }
+      }, [token, nav]);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -36,7 +48,7 @@ function ResponsiveAppBar() {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="fixed">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -85,9 +97,14 @@ function ResponsiveAppBar() {
                             onClose={handleCloseNavMenu}
                             sx={{ display: { xs: 'block', md: 'none' } }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                            {pages.map(([label, path]) => (
+                                <MenuItem
+                                    key={label}
+                                    component={RouterLink}
+                                    to={path}
+                                    onClick={handleCloseNavMenu}
+                                >
+                                    <Typography sx={{ textAlign: 'center' }}>{label}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -112,13 +129,15 @@ function ResponsiveAppBar() {
                         LOGO
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
+                        {pages.map(([label, path]) => (
                             <Button
-                                key={page}
+                                key={label}
+                                component={RouterLink}
+                                to={path}
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                {page}
+                                {label}
                             </Button>
                         ))}
                     </Box>

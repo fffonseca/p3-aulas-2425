@@ -36,7 +36,7 @@ const LoginUI = () => {
 
     try {
       await login(email, password);
-    // eslint-disable-next-line no-unused-vars
+      // eslint-disable-next-line no-unused-vars
     } catch (error) {
       setMessage("Erro ao autenticar o utilizador.");
       //console.error("Erro ao autenticar o utilizador:", error);
@@ -135,22 +135,20 @@ const LoginUI = () => {
           >
             {load ? <CircularProgress size={24} color="inherit" /> : "Entrar"}
           </Button>
-          <Grid container justifyContent="flex-end">
-            <Grid item>
-              <Link
-                component={RouterLink}
-                to="/register"
-                variant="body2"
-                sx={{
-                  textDecoration: "none",
-                  color: "primary.main",
-                  fontWeight: 500,
-                  "&:hover": { textDecoration: "underline" },
-                }}
-              >
-                Ainda não tens uma conta? Regista-te agora
-              </Link>
-            </Grid>
+          <Grid container justifyContent="center">
+            <Link
+              component={RouterLink}
+              to="/register"
+              variant="body2"
+              sx={{
+                textDecoration: "none",
+                color: "primary.main",
+                fontWeight: 500,
+                "&:hover": { textDecoration: "underline" },
+              }}
+            >
+              Ainda não tens uma conta?
+            </Link>
           </Grid>
         </Box>
       </Box>

@@ -1,8 +1,9 @@
+version: "3.8"
 services:
   mysql:
     image: mysql:latest
     container_name: mysql
-    restart: always
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: 123
       MYSQL_DATABASE: projeto_aulas
@@ -14,7 +15,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     container_name: phpmyadmin
-    restart: always
+    restart: unless-stopped
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
@@ -22,3 +23,27 @@ services:
       - "8081:80"
     depends_on:
       - mysql
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - DB_HOST=mysql
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
